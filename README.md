@@ -6,7 +6,7 @@ A project for Week 2 of 'Automating Real-World Tasks with Python' course.
 
 This is free and unencumbered software released into the public domain.
 
-## Problem definition
+## Problem statement
 
 This script reads a bunch of files from a given location, builds JSON requests from them, POSTs the requests to a REST API endpoint and makes sure that the web service responds with success.
 
