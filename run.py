@@ -59,7 +59,20 @@ if __name__ == '__main__':
       # At this point the content of a single feedback file was read into
       # a dictionary without error.
       pprint(feedback)
-      # TODO Use requests.post() to make POST request to API endpoint
-      # TODO make sure error message is not returned. 
-      # TODO Print status_code and text of the response objects
-      # TODO status_code 201 is created success response code
+      # Using 'requests' POST the feedback dictionary to the API endpoint
+      # FIXME Not using the timeout parameter, so the POST request can hang indefinitely
+      try:
+        response = requests.post(api_endpoint_url, json = feedback)
+      except RequestException as err:
+        # Something catastrophic has happened to the request,
+        # it probably has not even reached the API endpoint.
+        print(f"Error while connecting to the REST API. File '{feedback_file}' not uploaded.", file=sys.stderr)
+      else:
+        if not response.ok:
+          print(f"Error returned by the API endpoint while processing '{feedback_file}'.", file=sys.stderr)
+          print(f"Status code: '{response.status_code}'.", file=sys.stderr)
+          print(response.headers, file=sys.stderr)
+          print(response.text, file=sys.stderr)
+        else:
+          if response.status_code != 201:
+            print("Warning: success reported but with status {response.status_code} while processing '{feedback_file}'.", file=sys.stderr)
