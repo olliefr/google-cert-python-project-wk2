@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
+# -*- coding: future_fstrings -*-
+# the above is to make the code work on grading server which uses Python 3.5
 
 import os
 import sys
 import requests
+from requests.exceptions import RequestException
 from pprint import pprint
 
 corpweb_ip = 'a.b.c.d'
@@ -30,7 +33,7 @@ if __name__ == '__main__':
   # Construct API endpoint address
   # FIXME Does the IP address need validating? This is not a public script though.
   # corpweb_ip can be an IP address or a DNS name as well though...
-  api_endpoint_url = f"http://{corpweb_ip}/feedback"
+  api_endpoint_url = f"http://{corpweb_ip}/feedback/"
 
   # Read the directory contents and terminate on error.
   # Print a helpful error message on failure.
