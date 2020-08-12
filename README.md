@@ -1,10 +1,14 @@
-# A script that interacts with a running web service (REST API)
+# A script that interacts with a running web service
 
 A project for Week 2 of 'Automating Real-World Tasks with Python' course.
 
 **Oliver Frolovs, 2020**
 
 This is free and unencumbered software released into the public domain.
+
+## Problem definition
+
+This script reads a bunch of files from a given location, builds JSON requests from them, POSTs the requests to a REST API endpoint and makes sure that the web service responds with success.
 
 ## Environment 
 
